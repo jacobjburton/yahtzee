@@ -60,7 +60,8 @@ class App extends Component
       sortedRolls = [],
       smStraight = 0,
       lgStraight = 0,
-      chance = 0;
+      chance = 0,
+      highestScore = {};
 
 
     let displayRolls = rolls.map((roll, i) => 
@@ -97,47 +98,33 @@ class App extends Component
         if (rolls[i] === 8) eights++;
       }
       arrayOfValues = [ones, twos, threes, fours, fives, sixes, sevens, eights];
-      console.table({ones, twos, threes, fours, fives, sixes, sevens, eights})
+      console.table({ones, twos, threes, fours, fives, sixes, sevens, eights});
+
+      
 
       var noDuplicates = true;
       var twoDuplicates = false;
       var threeDuplicates = false;
+      var highest = {};
 
       for (let i = 0; i < arrayOfValues.length; i++)
       {
-        if (arrayOfValues[i] === 2)
-        {
-          twoDuplicates = true;
-        }
+        arrayOfValues[i] === 2 ? twoDuplicates = true : twoDuplicates = false;
         if (arrayOfValues[i] === 3)
         {
           threeDuplicates = true;
           threeOfAKind = rolls.reduce((sum, i) => sum + i, 0);
         }
-        if (arrayOfValues[i] === 4)
-        {
-          fourOfAKind = rolls.reduce((sum, i) => sum + i, 0);
-        }
-        if (arrayOfValues[i] === 5)
-        {
-          fiveOfAKind = rolls.reduce((sum, i) => sum + i, 0);
-        }
-        if (arrayOfValues[i] > 1)
-        {
-          noDuplicates = false;
-        }
+        arrayOfValues[i] === 4 ? fourOfAKind = rolls.reduce((sum, i) => sum + i, 0) : fourOfAKind = 0;
+        arrayOfValues[i] === 5 ? fiveOfAKind = rolls.reduce((sum, i) => sum + i, 0): fiveOfAKind = 0;
+        arrayOfValues[i] > 1 ? noDuplicates = false : '';
+        // arrayOfValues[i] < arrayOfValues[i + 1] ? highest = {arrayOfValues[i + 1]} : highest = {arrayOfValues[i]}
 
       }
 
-      if (twoDuplicates && threeDuplicates)
-      {
-        fullHouse = 25;
-      }
+      twoDuplicates && threeDuplicates ? fullHouse = 25 : fullHouse = 0;
 
-      if (noDuplicates)
-      {
-        noneOfAKind = 40;
-      }
+      noDuplicates ? noneOfAKind = 40 : noneOfAKind = 0;
 
       sortedRolls = rolls.slice();
       sortedRolls.sort((a, b) => a - b);
@@ -151,14 +138,9 @@ class App extends Component
         }
   
       }
-      if (numberInOrder === 4)
-      {
-        smStraight = 30;
-      }
-      if (numberInOrder === 5)
-      {
-        lgStraight = 40;
-      }      
+      numberInOrder === 4 ? smStraight = 30 : smStraight = 0;
+      numberInOrder === 5 ? lgStraight = 40 : lgStraight = 0;      
+      
     }
 
 
@@ -190,6 +172,8 @@ class App extends Component
           </div>
           <div className='chance'>
             {chance > 0 ? <h6 className="results">Chance Score: {chance}</h6> : ''}
+          </div>
+          <div className='highScore'>
           </div>
         </div>
 
