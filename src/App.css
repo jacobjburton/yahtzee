@@ -1,28 +1,73 @@
-.App {
+.App
+{
   text-align: center;
+  background: lightgray;
+  height: 100vh;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+h2
+{
+  margin-left: 10px;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+button
+{
+  margin: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 2px;
+  background: black;
   color: white;
 }
 
-.App-title {
-  font-size: 1.5em;
+.rollResults
+{
+  display: flex;
+  align-content: center;
+  align-items: center;
+  margin: auto;
+  background: grey;
+  justify-content: center;
+  max-width: 300px;
+  max-height: 400px;
+  border-radius: 2px;
 }
 
-.App-intro {
-  font-size: large;
+.roll
+{
+  /* display: flex; */
+  width: 50px;
+  margin: 6px;
+  background: white;
+  border-radius: 2px;
+  text-align: center;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.roll:last-child
+{
+  margin-right: 10px;
+}
+
+.score
+{
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+}
+
+.sums, .sets, .straights
+{
+  display: flex;
+  border-bottom: 2px solid grey;
+}
+
+.results
+{
+  margin: 20px;
+  padding: 10px;
+  border: 2px dashed grey;
+  max-width: 60px;
+  line-height: 20px;
 }
